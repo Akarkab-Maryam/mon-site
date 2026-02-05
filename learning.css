@@ -1,0 +1,524 @@
+/* ========================================
+   RESET ET BASE
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Effet d'animation de fond */
+body::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -100px;
+    left: -100px;
+    animation: float 6s ease-in-out infinite;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    bottom: -150px;
+    right: -150px;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+/* ========================================
+   CONTENEUR PRINCIPAL
+   ======================================== */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        0 0 100px rgba(102, 126, 234, 0.2);
+    padding: 50px 40px;
+    max-width: 550px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    animation: slideUp 0.6s ease-out;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Décoration en haut du conteneur */
+.container::before {
+    content: '✨';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    background: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* ========================================
+   EN-TÊTE / TITRE
+   ======================================== */
+.header {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.header h1 {
+    text-align: center;
+    color: #667eea;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Ligne décorative sous le titre */
+.header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    border-radius: 2px;
+}
+
+/* ========================================
+   FORMULAIRE
+   ======================================== */
+.form-rdv {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* ========================================
+   GROUPES DE CHAMPS
+   ======================================== */
+.form-group {
+    position: relative;
+    animation: fadeIn 0.8s ease-out backwards;
+}
+
+/* Animation décalée pour chaque groupe */
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+.form-group:nth-child(6) { animation-delay: 0.6s; }
+.form-group:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ========================================
+   LABELS
+   ======================================== */
+.form-group > label {
+    display: block;
+    color: #333;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #764ba2;
+}
+
+/* ========================================
+   INPUTS TEXTE, TEL
+   ======================================== */
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(to right, #fdfbfb 0%, #ebedee 100%);
+    color: #333;
+}
+
+input[type="text"]::placeholder,
+input[type="tel"]::placeholder {
+    color: #999;
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Focus sur les inputs */
+input[type="text"]:focus,
+input[type="tel"]:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 
+        0 0 0 4px rgba(102, 126, 234, 0.1),
+        0 5px 20px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Hover sur les inputs */
+input[type="text"]:hover,
+input[type="tel"]:hover {
+    border-color: #764ba2;
+}
+
+/* ========================================
+   BOUTONS RADIO
+   ======================================== */
+.radio-group {
+    display: flex;
+    gap: 30px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 12px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    background: white;
+    flex: 1;
+    min-width: 130px;
+    justify-content: center;
+}
+
+.radio-option:hover {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+/* Radio input personnalisé */
+input[type="radio"] {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: #667eea;
+    position: relative;
+}
+
+.radio-option label {
+    margin: 0;
+    cursor: pointer;
+    font-weight: 500;
+    color: #555;
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+/* Quand le radio est coché */
+input[type="radio"]:checked + label {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.radio-option:has(input[type="radio"]:checked) {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* ========================================
+   SELECT (LISTE DÉROULANTE)
+   ======================================== */
+select {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(to right, #fdfbfb 0%, #ebedee 100%);
+    color: #333;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill='%23667eea' d='M10 12l-6-6h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 50px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 
+        0 0 0 4px rgba(102, 126, 234, 0.1),
+        0 5px 20px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+select:hover {
+    border-color: #764ba2;
+}
+
+/* Options du select */
+option {
+    padding: 10px;
+    background: white;
+    color: #333;
+}
+
+option:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* ========================================
+   TEXTAREA
+   ======================================== */
+textarea {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 130px;
+    max-height: 300px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(to right, #fdfbfb 0%, #ebedee 100%);
+    color: #333;
+    line-height: 1.6;
+}
+
+textarea::placeholder {
+    color: #999;
+    font-style: italic;
+    font-weight: 300;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 
+        0 0 0 4px rgba(102, 126, 234, 0.1),
+        0 5px 20px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+textarea:hover {
+    border-color: #764ba2;
+}
+
+/* ========================================
+   BOUTON SUBMIT
+   ======================================== */
+button[type="submit"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 10px;
+    box-shadow: 
+        0 10px 30px rgba(102, 126, 234, 0.4),
+        0 0 0 0 rgba(102, 126, 234, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de brillance sur le bouton */
+button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 15px 40px rgba(102, 126, 234, 0.6),
+        0 0 0 8px rgba(102, 126, 234, 0.1);
+}
+
+button[type="submit"]:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 
+        0 8px 20px rgba(102, 126, 234, 0.4),
+        0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+/* Animation de pulsation */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 
+            0 10px 30px rgba(102, 126, 234, 0.4),
+            0 0 0 0 rgba(102, 126, 234, 0.5);
+    }
+    50% {
+        box-shadow: 
+            0 10px 30px rgba(102, 126, 234, 0.4),
+            0 0 0 10px rgba(102, 126, 234, 0);
+    }
+}
+
+button[type="submit"] {
+    animation: pulse 2s infinite;
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE
+   ======================================== */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 15px;
+    }
+    
+    .container {
+        padding: 35px 25px;
+        border-radius: 25px;
+    }
+    
+    .header h1 {
+        font-size: 28px;
+        letter-spacing: 1px;
+    }
+    
+    .form-rdv {
+        gap: 20px;
+    }
+    
+    .radio-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .radio-option {
+        min-width: 100%;
+    }
+    
+    input[type="text"],
+    input[type="tel"],
+    select,
+    textarea {
+        font-size: 15px;
+        padding: 14px 16px;
+    }
+    
+    button[type="submit"] {
+        font-size: 16px;
+        padding: 16px 30px;
+    }
+    
+    body::before,
+    body::after {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* ========================================
+   ANIMATIONS SUPPLÉMENTAIRES
+   ======================================== */
+
+/* Effet de rebond sur les inputs au focus */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+    animation: bounce 0.3s ease;
+}
+
+/* Curseur stylisé */
+input[type="text"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+    caret-color: #667eea;
+}

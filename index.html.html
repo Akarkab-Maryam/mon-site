@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Prendre un rendez-vous</title>
+    <link rel="stylesheet" href="learning.css">
+  </head>
+  <body>
+  
+    <!-- Conteneur principal -->
+    <div class="container">
+      
+      <!-- En-tête avec titre -->
+      <div class="header">
+        <h1>biti thder meaya?!</h1>
+      </div>
+      
+      <!-- Formulaire -->
+      <form class="form-rdv" action="traitement.php" method="POST">
+        
+        <!-- Champ Nom -->
+        <div class="form-group">
+          <input type="text" id="nom" name="nom" placeholder=" kteb knytek ">
+        </div>
+        
+        <!-- Champ Prénom -->
+        <div class="form-group">
+          <input type="text" id="prenom" name="prenom" placeholder="kteb smeytek">
+        </div>
+        
+        <!-- Champ Téléphone -->
+        <div class="form-group">
+          <input type="tel" id="telephone" name="telephone" placeholder=" numéro télé ila biti">
+        </div>
+        
+        <!-- Section Sexe -->
+        <div class="form-group">
+          <label for="sexe">Votre sexe :</label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" id="femme" name="sexe" value="femme">
+              <label for="femme">bnt</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="homme" name="sexe" value="homme">
+              <label for="homme">deri</label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Section Relation -->
+        <div class="form-group">
+          <label for="relation">chbini o bink :</label>
+          <select id="relation" name="relation">
+            <option value="" selected disabled hidden>Vous êtes qui ?</option>
+            <option value="famille"> L3a2ila</option>
+            <option value="amis">shab o shabat</option>
+            <option value="etranger">matatn3rfkch</option>
+            <option value="connaissance">m3erfa</option>
+          </select>
+        </div>
+        
+        <!-- Section Motivation -->
+        <div class="form-group">
+          <label for="motivation">Motivation</label>
+          <textarea id="motivation" name="motivation" rows="5" placeholder="lash biti thder m3aya aslan ?"></textarea>
+        </div>
+        
+        <!-- Bouton d'envoi -->
+        <div class="form-group">
+          <button type="submit">Envoyer</button>
+        </div>
+        
+      </form>
+      
+    </div>
+
+  </body>
+</html>
